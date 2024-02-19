@@ -1,4 +1,4 @@
-import {Friend, Colleague } from './myTypes'
+import {Friend, Colleague, EmailContact} from './myTypes'
 import {colleagues, friends} from "./01-basics";
 import { ColleagueHistory} from './myTypes';
 
@@ -16,7 +16,7 @@ function allOlder(friends: Friend[]): string[] {
 }
 
 const updatedAges = allOlder(friends);
-console.log(updatedAges);
+//console.log(updatedAges);
 
 function highestExtension(cs: Colleague[]): Colleague {
     const result = cs.sort(
@@ -24,7 +24,7 @@ function highestExtension(cs: Colleague[]): Colleague {
     );
     return result[cs.length - 1];
 }
-console.log(highestExtension(colleagues.current));
+//console.log(highestExtension(colleagues.current));
 
 
 function addColleague(colleaguesArray: Colleague[], name: string, department: string, email: string): void {
@@ -45,4 +45,20 @@ function addColleague(colleaguesArray: Colleague[], name: string, department: st
 }
 
 addColleague(colleagues.current, "Sheild O Connell", "HR", "soc@here.com");
-console.log(colleagues.current.filter((c) => c.name === "Sheild O Connell"));
+//console.log(colleagues.current.filter((c) => c.name === "Sheild O Connell"));
+
+function sortColleagues(
+    colleagues: Colleague[],
+    sorter: (c1: Colleague, c2: Colleague) => number
+): EmailContact[] {
+    const sorted = colleagues.sort(sorter); // Colleague[] inferred
+    const result: EmailContact[] = sorted.map((ce) => ({ name: ce.name, email: ce.contact.email }));
+    return result
+}
+
+function findFriends(friends: Friend[], criteria: (f: Friend) => boolean): Friend[] {
+    return friends.filter(criteria);
+}
+
+console.log(findFriends(friends, (friend) => friend.name.startsWith('Pa')));
+console.log(findFriends(friends, (friend) => friend.age < 35));
