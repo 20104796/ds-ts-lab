@@ -3,7 +3,7 @@ import {Friend, Colleague, ColleagueHistory } from './myTypes'
 const friend1: Friend= {
     name: "Paul Fleming",
     phone: "087-12345",
-    age: 25,
+    age: 26,
 };
 
 const friend2: Friend = {
