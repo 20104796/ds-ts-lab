@@ -17,6 +17,7 @@ export const friends: Friend[] = [friend1, friend2];
 
 
 const colleague1: Colleague = {
+    //name: "Jane Costello",
     name: "Ralph Graham",
     department: "Engineering",
     contact: {
